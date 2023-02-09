@@ -8,6 +8,9 @@ import { Product } from '../product';
   providedIn: 'root'
 })
 export class ProductFecthService {
-  
-  constructor() { }
+  private productsUrl = 'assets/data.json';
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl);
+  }
+  constructor(private http: HttpClient) { }
 }

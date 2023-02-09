@@ -1,1 +1,9 @@
-<p>product-item-detail works!</p>
+
+<h2>Product Details</h2>
+<div *ngIf="product">
+    <h3>{{ product.name }}</h3>
+    <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" width="300" height="300">
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }}</p>
+    <button type="button">Add To Cart</button>
+</div>
