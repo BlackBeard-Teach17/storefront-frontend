@@ -1,9 +1,15 @@
 
 <h2>Product Details</h2>
-<div *ngIf="product">
-    <h3>{{ product.name }}</h3>
-    <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" width="300" height="300">
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }}</p>
-    <button type="button">Add To Cart</button>
+<div class="card" *ngIf="product">
+    <h1>{{ product.name }}</h1>
+    <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" class="responsive-img" width="300" height="300">
+    <p class="description">{{ product.description }}</p>
+    <p class="price">${{ product.price }}</p>
+    <button type="button" (click)="addToCart(product)">Add To Cart</button>
+
 </div>
+
+<div class="back-button">
+    <button type="button" (click)="goBack()">Back To Products</button>
+</div>
+
