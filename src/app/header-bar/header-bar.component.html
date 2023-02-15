@@ -1,5 +1,7 @@
-<a class="navbar" [routerLink]="['/']">
-    <h1>My Store</h1>
-</a>
-
-<a class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="navbar">
+    <a [routerLink]="['/']"><i class="fa fa-fw fa-home"></i>My Store</a>
+    <div class="cart">
+      <a [routerLink]="['cart']" ><i class="fa fa-shopping-basket" aria-hidden="true"></i> Cart<span class="badge">{{cartItemsCount()}}</span></a>
+    </div>
+</div>

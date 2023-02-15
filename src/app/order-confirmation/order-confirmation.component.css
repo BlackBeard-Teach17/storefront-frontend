@@ -1,0 +1,16 @@
+
+.order-confirmation {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+}
+
+button[type="products-button"] {
+    background-color: #2196F3;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    cursor: pointer;
+}
