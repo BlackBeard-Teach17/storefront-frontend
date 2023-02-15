@@ -37,3 +37,12 @@ h2 {
 .card button:hover {
   opacity: 0.7;
 }
+
+input[type=number] {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+

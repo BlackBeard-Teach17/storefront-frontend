@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -26,8 +26,8 @@ export class ProductItemDetailComponent implements OnInit{
     };
    }
 
-   addToCart(product: Product) {
-    this.cartService.addToCart(product);
+   addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     window.alert('Your product has been added to the cart!');
    }
 

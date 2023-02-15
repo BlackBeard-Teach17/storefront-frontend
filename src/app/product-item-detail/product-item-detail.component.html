@@ -4,9 +4,10 @@
     <h1>{{ product.name }}</h1>
     <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" class="responsive-img" width="300" height="300">
     <p class="description">{{ product.description }}</p>
-    <p class="price">${{ product.price }}</p>
-    <button type="button" (click)="addToCart(product)">Add To Cart</button>
-
+    <p class="price">${{ product.price }}<i class="fa fa-tag" aria-hidden="true"></i></p>
+    <label for="quantity">Quantity:</label>
+    <input type="number" [(ngModel)]="product.quantity" placeholder="1"[defaultValue]="1" required number>
+    <button type="button" (click)="addToCart(product, product.quantity)">Add To Cart</button>
 </div>
 
 <div class="back-button">

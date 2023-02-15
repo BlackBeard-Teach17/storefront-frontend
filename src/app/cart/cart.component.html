@@ -6,11 +6,12 @@
 </div>
 <div *ngIf="cartItems.length > 0">
     <div class="cart-container" *ngFor="let item of cartItems">
-        <p>{{ item.name }}<span class="price">${{ item.price }}</span></p>
+        <p>{{ item.name }}<span class="price"><i class="fa fa-tag" aria-hidden="true"></i>${{ item.price }}</span></p>
+        <label for="quantity">Quantity:</label>
         <input type="number" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, item.quantity)">
         <button type="remove-button" (click)="removeProduct(item)">Remove Product</button>
     </div>
-    <p>Total: <span class="price"><b>${{ calculateTotal() }}</b></span> </p>
+    <p>Total: <span class="price"><i class="fa fa-tag" aria-hidden="true"></i><b>${{ calculateTotal() }}</b></span> </p>
     <h2>Checkout</h2>
     <div class="checkout-form">
 
@@ -23,10 +24,10 @@
         </div>
       </div>
         <div class="input-container">
-          <label for="lastName"><i class="fa fa-user"></i></label>
-          <input type="text" id="lastname" formControlName="lastname" placeholder="Last Name" required><br>
+          <label for="lastName"><i class="fa fa-address-card"></i></label>
+          <input type="text" id="lastname" formControlName="lastname" placeholder="Address" required><br>
           <div class="error-message" *ngIf="PaymentDetails.controls.lastname.invalid && PaymentDetails.controls.lastname.touched">
-            <p> Invalid Last Name</p>
+            <p> Invalid Address</p>
         </div>
         </div>
         <div class="input-container">

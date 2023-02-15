@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProductService } from '../product.service';
+import { Component, OnInit} from '@angular/core';
+import { ProductService } from '../services/product.service';
 import { Product } from '../product';
 import { CartService } from '../services/cart.service';
 @Component({
@@ -17,8 +17,8 @@ export class ProductListComponent implements OnInit {
     this.getProducts();
   }
 
-  addToCart(product: Product) {
-    this.cartService.addToCart(product);
+  addToCart(product: Product, quantity: number = 1) {
+    this.cartService.addToCart(product, quantity);
     window.alert('Your product has been added to the cart!');
   }
 
