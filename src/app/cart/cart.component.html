@@ -1,1 +1,49 @@
-<p>cart works!</p>
+<h3>Cart</h3>
+
+<div class="empty-cart" *ngIf="cartItems.length === 0">
+    <p>Your cart is empty</p>
+    <button type="products-button" (click)="goToProducts()">Go to Products</button>
+</div>
+<div *ngIf="cartItems.length > 0">
+    <div class="cart-container" *ngFor="let item of cartItems">
+        <p>{{ item.name }}<span class="price">${{ item.price }}</span></p>
+        <input type="number" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, item.quantity)">
+        <button type="remove-button" (click)="removeProduct(item)">Remove Product</button>
+    </div>
+    <p>Total: <span class="price"><b>${{ calculateTotal() }}</b></span> </p>
+    <h2>Checkout</h2>
+    <div class="checkout-form">
+
+      <form [formGroup]="PaymentDetails" (ngSubmit)="checkout()">
+        <div class="input-container">
+        <label for="name"><i class="fa fa-user"></i></label>
+        <input type="text" id="Name" formControlName="name" placeholder="Full Name" required>
+        <div class="error-message" *ngIf="PaymentDetails.controls.name.invalid && PaymentDetails.controls.name.touched">
+            <p> Invalid Name</p>
+        </div>
+      </div>
+        <div class="input-container">
+          <label for="lastName"><i class="fa fa-user"></i></label>
+          <input type="text" id="lastname" formControlName="lastname" placeholder="Last Name" required><br>
+          <div class="error-message" *ngIf="PaymentDetails.controls.lastname.invalid && PaymentDetails.controls.lastname.touched">
+            <p> Invalid Last Name</p>
+        </div>
+        </div>
+        <div class="input-container">
+        <label for="creditCardNumber"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></label>
+        <input type="text" id="creditCardNumber" formControlName="creditCardNumber" placeholder="Credit Card Number" required>
+        <div class="error-message" *ngIf="PaymentDetails.controls.creditCardNumber.invalid && PaymentDetails.controls.creditCardNumber.touched">
+            <p> Invalid Credit Card Number: Credit card should be 16 digits</p>
+        </div>
+      </div>
+        <button type="submit">Checkout</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="PaymentDetails.valid && submitted">
+    <app-order-confirmation [name]="PaymentDetails.value.name"></app-order-confirmation>
+</div>
+
+
+
