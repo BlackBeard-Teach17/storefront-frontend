@@ -8,13 +8,13 @@ export class CartService {
   items: Product[] = [];
 
 
-  addToCart(product: Product) {
+  addToCart(product: Product, quantity: number = 1): void {
     const productExistsInCart = this.items.find(item => item.id === product.id);
     if (productExistsInCart) {
-      productExistsInCart.quantity += 1;
+      productExistsInCart.quantity = quantity;
     }
     else {
-      this.items.push({ ...product, quantity: 1 });
+      this.items.push({ ...product, quantity: quantity });
       return;
     }
   }
