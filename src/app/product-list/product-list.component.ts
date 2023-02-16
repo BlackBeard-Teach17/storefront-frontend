@@ -20,7 +20,6 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product, quantity: number = 1) {
     this.cartService.addToCart(product, quantity);
-    this.productAdded(product);
   }
 
   getProducts(): void {
@@ -29,8 +28,4 @@ export class ProductListComponent implements OnInit {
 
     });
   }
-
-  productAdded(product: Product) {
-    this.messageService.add({severity:'success', summary:product.name + ' Added', detail:product.name + 'has been added to the cart'});
-   }
 }

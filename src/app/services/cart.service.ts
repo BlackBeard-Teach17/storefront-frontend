@@ -22,8 +22,8 @@ export class CartService {
   removeProduct(product: Product) {
     const productExistsInCart = this.items.find(item => item.id === product.id);
     if (productExistsInCart) {
-        const index = this.items.indexOf(productExistsInCart);
-        this.items.splice(index, 1);
+      const index = this.items.indexOf(productExistsInCart);
+      this.items.splice(index, 1);
     }
   }
 

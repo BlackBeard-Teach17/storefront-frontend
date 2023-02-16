@@ -39,7 +39,7 @@ export class ProductItemDetailComponent implements OnInit{
    }
 
    productAdded(product : Product) {
-    this.messageService.add({severity:'success', summary:product.name + ' Added', detail:'Product has been added to the cart'});
+    this.messageService.add({severity:'success', detail:product.name + ' has been added to the cart'});
    }
 
   ngOnInit() {

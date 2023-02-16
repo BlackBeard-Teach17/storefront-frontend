@@ -15,13 +15,13 @@ import { CartComponent } from './cart/cart.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product/:productId', component: ProductItemDetailComponent },
-  { path: 'confirmation', component: OrderConfirmationComponent }
+  { path: 'confirmation', component: OrderConfirmationComponent },
 ];
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ const routes: Routes = [
     ProductItemDetailComponent,
     OrderConfirmationComponent,
     HeaderBarComponent,
-    CheckoutComponent
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,

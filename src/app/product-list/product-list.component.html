@@ -1,15 +1,9 @@
 <h2>Products</h2>
 <div class="grid-container">
-  <div class="card" *ngFor="let product of products">
-    <a [routerLink]="['/product', product.id]"><h1>{{ product.name }}</h1></a><br>
-    <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" width="300" height="300"><br>
-    <p class="price"> ${{ product.price }}<i class="fa fa-tag" aria-hidden="true"></i></p>
-    <label for="quantity">Quantity:</label>
-    <input type="number" [(ngModel)]="product.quantity" placeholder="1" [defaultValue]="1">
-
-    <button type="button" [disabled]="product.quantity <= 0" (click)="addToCart(product, product.quantity)"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
-    <p-message severity="error" text="Please enter a valid quantity" *ngIf="product.quantity <= 0"></p-message>
-    <p-toast position="top-center"></p-toast>
-  </div>
+  <app-product-item
+  *ngFor="let product of products"
+  [product]="product"
+  (addToCart)="addToCart($event.product, $event.quantity)">
+  </app-product-item>
 </div>
 

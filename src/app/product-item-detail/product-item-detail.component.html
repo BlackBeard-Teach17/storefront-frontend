@@ -10,8 +10,8 @@
     <button type="button" [disabled]="product.quantity <= 0" (click)="addToCart(product, product.quantity)">
       <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart
     </button>
-    <p-message severity="error" text="Please enter a valid quantity" *ngIf="product.quantity <= 0"></p-message>
-    <p-toast position="top-center"></p-toast>
+    <p-message severity="error" text="Quantity cannot be less than 1 or a letter" *ngIf="product.quantity <= 0"></p-message>
+    <p-toast position="bottom-left"></p-toast>
 </div>
 
 <div class="back-button">

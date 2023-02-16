@@ -11,6 +11,7 @@
         <input type="number" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, item.quantity)">
         <button type="remove-button" (click)="removeProduct(item)">Remove Product</button>
     </div>
+    <p-toast position="bottom-left" id="toast"></p-toast>
     <p>Total: <span class="price"><i class="fa fa-tag" aria-hidden="true"></i><b>${{ calculateTotal() }}</b></span> </p>
     <h2>Checkout</h2>
     <div class="checkout-form">
@@ -32,12 +33,12 @@
         </div>
         <div class="input-container">
         <label for="creditCardNumber"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></label>
-        <input type="text" id="creditCardNumber" formControlName="creditCardNumber" placeholder="Credit Card Number" required>
+        <input type="text" id="creditCardNumber" formControlName="creditCardNumber" required pattern="[0-9]+" placeholder="Credit Card Number" required>
         <div class="error-message" *ngIf="PaymentDetails.controls.creditCardNumber.invalid && PaymentDetails.controls.creditCardNumber.touched">
-            <p> Invalid Credit Card Number: Credit card should be 16 digits</p>
+            <p>Credit card should be 16 digits/numbers</p>
         </div>
       </div>
-        <button type="submit">Checkout</button>
+        <button type="submit" [disabled]="PaymentDetails.invalid">Checkout</button>
     </form>
   </div>
 </div>
