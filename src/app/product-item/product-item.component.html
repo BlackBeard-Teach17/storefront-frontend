@@ -1,0 +1,10 @@
+
+    <a [routerLink]="['/product', product.id]"><h1>{{ product.name }}</h1></a><br>
+    <img *ngIf="product.url?.length" [src]="product.url" [alt]="product.name" width="300" height="300"><br>
+    <p class="price"> ${{ product.price }}<i class="fa fa-tag" aria-hidden="true"></i></p>
+    <label for="quantity">Quantity:</label>
+    <input type="number" [(ngModel)]="product.quantity" placeholder="1" [defaultValue]="1">
+
+    <button type="addToCart" [disabled]="product.quantity <= 0" (click)="onAddToCart(product, product.quantity)"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</button>
+    <p-message severity="error" text="Quantity cannot be less than 1 or a letter" *ngIf="product.quantity <= 0"></p-message>
+    <p-toast position="bottom-left"></p-toast>
