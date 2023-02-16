@@ -12,8 +12,8 @@ export class HeaderBarComponent {
   }
 
   cartItemsCount() {
-    let cartItems = 0;
-    return cartItems = this.cartService.getItems().reduce((acc, item) => acc + item.quantity, 0);
+    let cartItems = this.cartService.getItems().reduce((acc, item) => acc + item.quantity, 0);
+    return cartItems;
   }
 
 }
