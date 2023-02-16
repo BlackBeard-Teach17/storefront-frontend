@@ -7,10 +7,14 @@
     <p class="price">${{ product.price }}<i class="fa fa-tag" aria-hidden="true"></i></p>
     <label for="quantity">Quantity:</label>
     <input type="number" [(ngModel)]="product.quantity" placeholder="1"[defaultValue]="1" required number>
-    <button type="button" (click)="addToCart(product, product.quantity)">Add To Cart</button>
+    <button type="button" [disabled]="product.quantity <= 0" (click)="addToCart(product, product.quantity)">
+      <i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart
+    </button>
+    <p-message severity="error" text="Please enter a valid quantity" *ngIf="product.quantity <= 0"></p-message>
+    <p-toast position="top-center"></p-toast>
 </div>
 
 <div class="back-button">
-    <button type="button" (click)="goBack()">Back To Products</button>
+    <button type="button" (click)="goBack()"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back To Products</button>
 </div>
 

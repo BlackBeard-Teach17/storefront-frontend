@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Product } from '../product';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
@@ -15,7 +16,9 @@ export class ProductItemDetailComponent implements OnInit{
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private router: Router) {
+    private router: Router,
+    private messageService: MessageService
+    ) {
     this.product = {
       id: 0,
       name: '',
@@ -28,11 +31,15 @@ export class ProductItemDetailComponent implements OnInit{
 
    addToCart(product: Product, quantity: number = 1) {
     this.cartService.addToCart(product, quantity);
-    window.alert('Your product has been added to the cart!');
+    this.productAdded(product);
    }
 
    goBack() {
     this.router.navigate(['/']);
+   }
+
+   productAdded(product : Product) {
+    this.messageService.add({severity:'success', summary:product.name + ' Added', detail:'Product has been added to the cart'});
    }
 
   ngOnInit() {

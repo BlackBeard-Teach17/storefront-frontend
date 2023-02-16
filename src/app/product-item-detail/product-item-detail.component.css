@@ -55,3 +55,8 @@ input[type=number] {
   border-radius: 5px;
   width: 100%;
 }
+
+p-toast{
+  background-color: #09724f;
+  color: #02e628;
+}

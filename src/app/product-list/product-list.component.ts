@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { ProductService } from '../services/product.service';
 import { Product } from '../product';
 import { CartService } from '../services/cart.service';
@@ -11,7 +12,7 @@ export class ProductListComponent implements OnInit {
   products: Product [] = [];
 
 
-  constructor(private productListService: ProductService, private cartService:CartService) { }
+  constructor(private productListService: ProductService, private cartService:CartService, private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -19,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product, quantity: number = 1) {
     this.cartService.addToCart(product, quantity);
-    window.alert('Your product has been added to the cart!');
+    this.productAdded(product);
   }
 
   getProducts(): void {
@@ -28,4 +29,8 @@ export class ProductListComponent implements OnInit {
 
     });
   }
+
+  productAdded(product: Product) {
+    this.messageService.add({severity:'success', summary:product.name + ' Added', detail:product.name + 'has been added to the cart'});
+   }
 }
